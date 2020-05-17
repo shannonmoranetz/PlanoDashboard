@@ -19,13 +19,13 @@ export class DataTableComponent implements OnInit {
 
   ngOnInit() {
     this.initFetch(
-      {tab: { textLabel: 'error' }}
+      'error'
     );
   }
 
   initFetch($event) {
     this.loading = true;
-    this.whichData = $event.tab.textLabel.toLowerCase();
+    this.whichData = $event.toLowerCase();
     this.getLogData();
   }
 
