@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,11 @@ import { DataTableComponent } from './components/data-table/data-table.component
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule
+  ],
+  exports: [
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
