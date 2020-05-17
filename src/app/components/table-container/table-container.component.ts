@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, DoCheck } from '@angular/core';
 import { DataTableComponent } from '../data-table/data-table.component';
 
 @Component({
@@ -6,29 +6,38 @@ import { DataTableComponent } from '../data-table/data-table.component';
   templateUrl: './table-container.component.html',
   styleUrls: ['./table-container.component.css']
 })
-export class TableContainerComponent implements OnInit {
+export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
+  
+  attributes: object;
+  
+  constructor(public cdr: ChangeDetectorRef) { }
   @ViewChild(DataTableComponent, {static: false}) table: DataTableComponent;
 
-  attributes: object;
-
-  constructor() { }
-
-  // Set default attributes (data table POST request body)
+  ngDoCheck() { this.cdr.detectChanges(); }
+  
   ngOnInit() {
-    this.attributes = {
-      "count": true,
-      "filters": [
-        "today"
-      ],
-      "page": {
-        "size": 20,
-        "number": 1
-      },
-      "sort": {
-        "by": "created_at",
-        "order": "desc"
-      }
-    };
+  }
+  
+  // Set default attributes (data table POST request body)
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.attributes = {
+        "count": true,
+        "filters": [
+          "today"
+        ],
+        "page": {
+          "size": 20,
+          "number": 1
+        },
+        "sort": {
+          "by": "created_at",
+          "order": "desc"
+        }
+      };
+      this.table.initFetch('error', {})
+    })
+
   }
   
 

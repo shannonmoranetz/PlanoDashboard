@@ -10,7 +10,7 @@ import { endpoints } from '../../utils/endpoints';
 export class DataTableComponent implements OnInit {
 
   attributes: object;
-  columns: string[] = ['id', 'name'];
+  columns: string[] = ['id', 'error'];
   data = [];
   loading: boolean;
   whichData: string;
@@ -19,13 +19,14 @@ export class DataTableComponent implements OnInit {
 
   // Fetch default (error) logs on component init
   ngOnInit() {
-    this.initFetch('error', {});
+    // this.initFetch('error', {});
   }
 
   // Set load status and request type before calling fetch
   initFetch($event, attributes) {
     this.loading = true;
     this.whichData = $event.toLowerCase();
+    console.log(this.whichData)
     this.getLogData();
   }
 
@@ -37,8 +38,9 @@ export class DataTableComponent implements OnInit {
 
   // Subscription to fetch request data (POST request)
   getLogData() {
-    return this.logSvc.postLogAttrs(this.returnEndpoint(), this.attributes).subscribe((data) => {
-      console.log('Res: ', data);
+    return this.logSvc.postLogAttrs(this.returnEndpoint(), this.attributes).subscribe((res) => {
+      console.log('Res: ', res.data.results);
+      this.data = res.data.results;
     }, (error) => {
       this.loading = false;
       console.log('Error: ', error);
