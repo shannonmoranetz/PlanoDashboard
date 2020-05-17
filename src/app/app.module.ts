@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ToolbarComponent,
     DataTableErrorComponent,
     TableContainerComponent,
-    DataTableRequestComponent
+    DataTableRequestComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
