@@ -9,21 +9,21 @@ import { endpoints } from '../../utils/endpoints';
 })
 export class DataTableComponent implements OnInit {
 
-  attributes;
+  attributes: object;
   columns: string[] = ['row', 'name'];
   data = [];
-  loading;
-  whichData;
+  loading: boolean;
+  whichData: string;
 
   constructor(private logSvc: LogService) { }
 
   // Fetch default (error) logs on component init
   ngOnInit() {
-    this.initFetch('error');
+    this.initFetch('error', {});
   }
 
   // Set load status and request type before calling fetch
-  initFetch($event) {
+  initFetch($event, attributes) {
     this.loading = true;
     this.whichData = $event.toLowerCase();
     this.getLogData();

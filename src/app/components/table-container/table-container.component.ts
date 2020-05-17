@@ -9,9 +9,26 @@ import { DataTableComponent } from '../data-table/data-table.component';
 export class TableContainerComponent implements OnInit {
   @ViewChild(DataTableComponent, {static: false}) table: DataTableComponent;
 
+  attributes: object;
+
   constructor() { }
 
   ngOnInit() {
+    this.attributes = {
+      "count": true,
+      "filters": [
+        "today"
+      ],
+      "page": {
+        "size": 20,
+        "number": 1
+      },
+      "sort": {
+        "by": "created_at",
+        "order": "desc"
+      }
+    };
   }
+  
 
 }
