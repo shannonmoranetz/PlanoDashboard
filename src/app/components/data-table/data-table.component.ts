@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LogService } from 'src/app/services/log.service';
+import { endpoints } from '../../utils/endpoints';
 
 @Component({
   selector: 'app-data-table',
@@ -7,11 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataTableComponent implements OnInit {
 
+  attributes;
   columns: string[] = ['row', 'name'];
   data = [];
+  loading;
 
-  constructor() { }
+  constructor(private logSvc: LogService,) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getLogData();
+  }
+
+  getLogData() {
+    this.loading = true;
+    return this.logSvc.postLogAttrs(endpoints.errors, this.attributes).subscribe((data) => {
+      console.log('Res: ', data);
+    }, (error) => {
+      console.log('Error: ', error);
+    }, () => {
+      this.loading = false;
+    });
+  }
 
 }
