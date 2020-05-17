@@ -17,23 +17,25 @@ export class DataTableComponent implements OnInit {
 
   constructor(private logSvc: LogService) { }
 
+  // Fetch default (error) logs on component init
   ngOnInit() {
-    this.initFetch(
-      'error'
-    );
+    this.initFetch('error');
   }
 
+  // Set load status and request type before calling fetch
   initFetch($event) {
     this.loading = true;
     this.whichData = $event.toLowerCase();
     this.getLogData();
   }
 
+  // Return appropriate request type variable based on tab selection
   returnEndpoint() {
     console.log('Data Type: ', this.whichData);
     return this.whichData === 'error' ? endpoints.errors : endpoints.requests;
   }
 
+  // Subscription to fetch request data (POST request)
   getLogData() {
     return this.logSvc.postLogAttrs(this.returnEndpoint(), this.attributes).subscribe((data) => {
       console.log('Res: ', data);
