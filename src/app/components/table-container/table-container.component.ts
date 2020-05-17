@@ -13,6 +13,7 @@ export class TableContainerComponent implements OnInit {
 
   constructor() { }
 
+  // Set default attributes (data table POST request body)
   ngOnInit() {
     this.attributes = {
       "count": true,

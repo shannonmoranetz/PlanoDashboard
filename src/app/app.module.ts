@@ -11,6 +11,7 @@ import { TableContainerComponent } from './components/table-container/table-cont
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     MatToolbarModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatToolbarModule,

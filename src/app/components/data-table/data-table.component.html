@@ -1,20 +1,21 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="data">
-
-    <!-- Row Column -->
-    <ng-container matColumnDef="row">
-      <th mat-header-cell *matHeaderCellDef>Row</th>
-      <td mat-cell *matCellDef="let data"> {{ data.row }} </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let data"> {{ data.name }} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="columns"></tr>
-    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-  </table>
-
-</div>
+<ng-container *ngIf="!loading">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="data">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let data.results"> {{ data.id }} </td>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let data"> {{ data.name }} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+  </div>
+</ng-container>
+<ng-container *ngIf="loading">
+  <mat-progress-spinner class="spinner-center" color="warn" mode="indeterminate"> </mat-progress-spinner>
+</ng-container>

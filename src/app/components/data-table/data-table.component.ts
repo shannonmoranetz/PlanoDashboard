@@ -10,7 +10,7 @@ import { endpoints } from '../../utils/endpoints';
 export class DataTableComponent implements OnInit {
 
   attributes: object;
-  columns: string[] = ['row', 'name'];
+  columns: string[] = ['id', 'name'];
   data = [];
   loading: boolean;
   whichData: string;
