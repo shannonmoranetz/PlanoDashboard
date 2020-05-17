@@ -8,12 +8,12 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { DataTableErrorComponent } from './components/data-table-error/data-table-error.component';
 import { TableContainerComponent } from './components/table-container/table-container.component';
 import { DataTableRequestComponent } from './components/data-table-request/data-table-request.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [

@@ -2,12 +2,19 @@
 
 ## User-friendly PlanoCore error and request logging interface
 
+![Screenshot](https://i.imgur.com/gyzYnd1.png)
+
 * * *
 
 ### Tech Stack
 
 *   Angular
 *   Material UI
+
+### Features
+
+*   Viewable Error log
+*   Viewable Request log
 
 ### Installation
 
