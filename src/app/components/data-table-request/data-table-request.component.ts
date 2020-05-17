@@ -10,7 +10,7 @@ import { endpoints } from '../../utils/endpoints';
 export class DataTableRequestComponent implements OnInit {
 
   attributes: object;
-  columns: string[] = ['id', 'service'];
+  columns: string[] = ['id', 'version', 'service', 'created', 'action', 'result'];
   dataSource = [];
   loading: boolean;
 
