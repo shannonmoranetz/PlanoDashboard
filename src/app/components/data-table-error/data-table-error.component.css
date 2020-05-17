@@ -7,6 +7,17 @@ table {
   overflow: auto;
 }
 
+.mat-column-error {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 80% !important;
+  width: 80% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
 .spinner-center {
   margin: 10% auto;
 }
