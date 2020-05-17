@@ -19,22 +19,29 @@ export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
 
   ngDoCheck() { this.cdr.detectChanges(); }
   
+  // Set default attributes (data table POST request body)
   ngOnInit() {
+    const defaultAttributes = {
+      "count": false,
+      "view": "dashboard_index"
+    };
+    this.errorAttributes = defaultAttributes;
+    this.requestAttributes = defaultAttributes;
   }
   
-  // Set default attributes (data table POST request body)
+  // Fetch default loaded data (error) on after component init
   ngAfterViewInit() {
     setTimeout(() => {
       this.errorTable.initFetch(this.errorAttributes);
     });
   }
 
+  // Fired on tab click, calls fetch method of child table component
   updateSelectedTab($event) {
     this.whichData = $event.tab.textLabel.toLowerCase();
     if (this.whichData === 'error') {
       this.errorTable.initFetch(this.errorAttributes);
     } else {
-      console.log('fire')
       this.requestTable.initFetch(this.requestAttributes);
     }
   }

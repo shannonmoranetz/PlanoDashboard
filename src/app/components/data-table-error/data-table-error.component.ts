@@ -10,7 +10,7 @@ import { endpoints } from '../../utils/endpoints';
 export class DataTableErrorComponent implements OnInit {
 
   attributes: object;
-  columns: string[] = ['id', 'error'];
+  columns: string[] = ['id', 'created', 'error'];
   dataSource = [];
   loading: boolean;
 
