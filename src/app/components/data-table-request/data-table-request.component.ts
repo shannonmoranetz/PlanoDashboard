@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LogService } from 'src/app/services/log.service';
+import { endpoints } from '../../utils/endpoints';
 
 @Component({
   selector: 'app-data-table-request',
@@ -7,9 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataTableRequestComponent implements OnInit {
 
-  constructor() { }
+  attributes: object;
+  columns: string[] = ['id', 'service'];
+  dataSource = [];
+  loading: boolean;
+
+  constructor(private logSvc: LogService) { }
 
   ngOnInit() {
+  }
+
+  // Set load status and request type before calling fetch
+  initFetch(attributes) {
+    this.loading = true;
+    this.attributes = attributes;
+    this.getRequestData();
+  }
+
+  // Subscription to fetch request data (POST request)
+  getRequestData() {
+    return this.logSvc.postLogAttrs(endpoints.requests, this.attributes).subscribe((res) => {
+      console.log('Requests: ', res.data.results);
+      this.dataSource = res.data.results;
+    }, (error) => {
+      this.loading = false;
+      console.log('Error: ', error);
+    }, () => {
+      this.loading = false;
+    });
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, DoCheck } from '@angular/core';
 import { DataTableErrorComponent } from '../data-table-error/data-table-error.component';
+import { DataTableRequestComponent } from '../data-table-request/data-table-request.component';
 
 @Component({
   selector: 'app-table-container',
@@ -13,7 +14,8 @@ export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
   whichData: string;
 
   constructor(public cdr: ChangeDetectorRef) { }
-  @ViewChild(DataTableErrorComponent, {static: false}) table: DataTableErrorComponent;
+  @ViewChild(DataTableErrorComponent, {static: false}) errorTable: DataTableErrorComponent;
+  @ViewChild(DataTableRequestComponent, {static: false}) requestTable: DataTableRequestComponent;
 
   ngDoCheck() { this.cdr.detectChanges(); }
   
@@ -23,27 +25,18 @@ export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
   // Set default attributes (data table POST request body)
   ngAfterViewInit() {
     setTimeout(() => {
-      this.errorAttributes = {
-        "count": true,
-        "filters": [
-          "today"
-        ],
-        "page": {
-          "size": 20,
-          "number": 1
-        },
-        "sort": {
-          "by": "created_at",
-          "order": "desc"
-        }
-      };
-      this.table.initFetch(this.errorAttributes);
+      this.errorTable.initFetch(this.errorAttributes);
     });
   }
 
   updateSelectedTab($event) {
     this.whichData = $event.tab.textLabel.toLowerCase();
-    this.table.initFetch(this.errorAttributes);
+    if (this.whichData === 'error') {
+      this.errorTable.initFetch(this.errorAttributes);
+    } else {
+      console.log('fire')
+      this.requestTable.initFetch(this.requestAttributes);
+    }
   }
 
 

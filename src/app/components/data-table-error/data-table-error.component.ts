@@ -16,17 +16,17 @@ export class DataTableErrorComponent implements OnInit {
 
   constructor(private logSvc: LogService) { }
 
-  // Fetch default (error) logs on component init
   ngOnInit() {
   }
 
   // Set load status and request type before calling fetch
   initFetch(attributes) {
     this.loading = true;
+    this.attributes = attributes;
     this.getErrorData();
   }
 
-  // Subscription to fetch request data (POST request)
+  // Subscription to fetch error data (POST request)
   getErrorData() {
     return this.logSvc.postLogAttrs(endpoints.errors, this.attributes).subscribe((res) => {
       console.log('Errors: ', res.data.results);

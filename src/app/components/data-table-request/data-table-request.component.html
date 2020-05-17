@@ -1,1 +1,23 @@
-<p>data-table-request works!</p>
+<ng-container *ngIf="!loading">
+  <div class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let data"> {{ data.id }} </td>
+      </ng-container>
+      <!-- Service Column -->
+      <ng-container matColumnDef="service">
+        <th mat-header-cell *matHeaderCellDef>Service</th>
+        <td mat-cell *matCellDef="let data"> {{ data.service }} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+
+  </div>
+</ng-container>
+<ng-container *ngIf="loading">
+  <mat-progress-spinner class="spinner-center" color="warn" mode="indeterminate"> </mat-progress-spinner>
+</ng-container>
