@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { DataTableErrorComponent } from './components/data-table-error/data-table-error.component';
 import { TableContainerComponent } from './components/table-container/table-container.component';
+import { DataTableRequestComponent } from './components/data-table-request/data-table-request.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -18,7 +19,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AppComponent,
     ToolbarComponent,
     DataTableErrorComponent,
-    TableContainerComponent
+    TableContainerComponent,
+    DataTableRequestComponent
   ],
   imports: [
     BrowserModule,
