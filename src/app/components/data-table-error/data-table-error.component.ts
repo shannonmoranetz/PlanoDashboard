@@ -1,13 +1,13 @@
-import { Component, OnInit, ɵCodegenComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LogService } from 'src/app/services/log.service';
 import { endpoints } from '../../utils/endpoints';
 
 @Component({
-  selector: 'app-data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.css']
+  selector: 'app-data-table-error',
+  templateUrl: './data-table-error.component.html',
+  styleUrls: ['./data-table-error.component.css']
 })
-export class DataTableComponent implements OnInit {
+export class DataTableErrorComponent implements OnInit {
 
   attributes: object;
   columns: string[] = ['id', 'error'];

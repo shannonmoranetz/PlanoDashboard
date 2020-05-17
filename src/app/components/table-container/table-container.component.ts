@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef, DoCheck } from '@angular/core';
-import { DataTableComponent } from '../data-table/data-table.component';
+import { DataTableErrorComponent } from '../data-table-error/data-table-error.component';
 
 @Component({
   selector: 'app-table-container',
@@ -11,7 +11,7 @@ export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
   attributes: object;
   
   constructor(public cdr: ChangeDetectorRef) { }
-  @ViewChild(DataTableComponent, {static: false}) table: DataTableComponent;
+  @ViewChild(DataTableErrorComponent, {static: false}) table: DataTableErrorComponent;
 
   ngDoCheck() { this.cdr.detectChanges(); }
   

@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { DataTableComponent } from './components/data-table/data-table.component';
+import { DataTableErrorComponent } from './components/data-table-error/data-table-error.component';
 import { TableContainerComponent } from './components/table-container/table-container.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,7 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   declarations: [
     AppComponent,
     ToolbarComponent,
-    DataTableComponent,
+    DataTableErrorComponent,
     TableContainerComponent
   ],
   imports: [
