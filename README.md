@@ -1,27 +1,42 @@
 # PlanoDashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+## User-friendly PlanoCore error and request logging interface
 
-## Development server
+* * *
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Tech Stack
 
-## Code scaffolding
+*   Angular
+*   Material UI
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Installation
 
-## Build
+To run this application locally, clone this [repository](https://github.com/shannonmoranetz/PlanoDashboard) and follow the steps below:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Navigate to the cloned directory at your download destination:
 
-## Running unit tests
+```
+$ cd PlanoDashboard
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Install dependencies:
 
-## Running end-to-end tests
+```
+$ npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Start your local server:
 
-## Further help
+```
+$ ng serve --open
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The browser will automatically open and show the page at:
+
+```
+localhost:4200
+```
+
+### Contributors
+
+* [Shannon Moranetz](https://github.com/shannonmoranetz)
