@@ -1,4 +1,4 @@
-<mat-tab-group mat-stretch-tabs color="warn" (selectedTabChange)="table.initFetch($event.tab.textLabel, attributes)">
+<mat-tab-group mat-stretch-tabs color="warn" (selectedTabChange)="updateSelectedTab($event)">
   <mat-tab label="Error">
     <app-data-table-error></app-data-table-error>
   </mat-tab>

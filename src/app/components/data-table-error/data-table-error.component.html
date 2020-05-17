@@ -1,7 +1,7 @@
 <ng-container *ngIf="!loading">
   <div class="mat-elevation-z8">
 
-    <table mat-table [dataSource]="data" *ngIf="(whichData === 'error')">
+    <table mat-table [dataSource]="dataSource">
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>ID</th>

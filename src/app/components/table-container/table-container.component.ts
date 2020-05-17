@@ -8,8 +8,10 @@ import { DataTableErrorComponent } from '../data-table-error/data-table-error.co
 })
 export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
   
-  attributes: object;
-  
+  errorAttributes: object;
+  requestAttributes: object;
+  whichData: string;
+
   constructor(public cdr: ChangeDetectorRef) { }
   @ViewChild(DataTableErrorComponent, {static: false}) table: DataTableErrorComponent;
 
@@ -21,7 +23,7 @@ export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
   // Set default attributes (data table POST request body)
   ngAfterViewInit() {
     setTimeout(() => {
-      this.attributes = {
+      this.errorAttributes = {
         "count": true,
         "filters": [
           "today"
@@ -35,10 +37,16 @@ export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
           "order": "desc"
         }
       };
-      this.table.initFetch('error', {})
-    })
-
+      this.table.initFetch(this.errorAttributes);
+    });
   }
+
+  updateSelectedTab($event) {
+    this.whichData = $event.tab.textLabel.toLowerCase();
+    this.table.initFetch(this.errorAttributes);
+  }
+
+
   
 
 }

@@ -11,36 +11,26 @@ export class DataTableErrorComponent implements OnInit {
 
   attributes: object;
   columns: string[] = ['id', 'error'];
-  data = [];
+  dataSource = [];
   loading: boolean;
-  whichData: string;
 
   constructor(private logSvc: LogService) { }
 
   // Fetch default (error) logs on component init
   ngOnInit() {
-    // this.initFetch('error', {});
   }
 
   // Set load status and request type before calling fetch
-  initFetch($event, attributes) {
+  initFetch(attributes) {
     this.loading = true;
-    this.whichData = $event.toLowerCase();
-    console.log(this.whichData)
-    this.getLogData();
-  }
-
-  // Return appropriate request type variable based on tab selection
-  returnEndpoint() {
-    console.log('Data Type: ', this.whichData);
-    return this.whichData === 'error' ? endpoints.errors : endpoints.requests;
+    this.getErrorData();
   }
 
   // Subscription to fetch request data (POST request)
-  getLogData() {
-    return this.logSvc.postLogAttrs(this.returnEndpoint(), this.attributes).subscribe((res) => {
-      console.log('Res: ', res.data.results);
-      this.data = res.data.results;
+  getErrorData() {
+    return this.logSvc.postLogAttrs(endpoints.errors, this.attributes).subscribe((res) => {
+      console.log('Errors: ', res.data.results);
+      this.dataSource = res.data.results;
     }, (error) => {
       this.loading = false;
       console.log('Error: ', error);
