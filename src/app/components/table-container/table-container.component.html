@@ -1,3 +1,5 @@
+<input placeholder="Search..." [(ngModel)]="searchInput"/>
+<button type="submit" (click)="submitSearch()">Search</button>
 <mat-tab-group mat-stretch-tabs color="warn" (selectedTabChange)="updateSelectedTab($event)">
   <mat-tab label="Error">
     <app-data-table-error></app-data-table-error>

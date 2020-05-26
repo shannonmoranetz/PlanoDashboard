@@ -9,8 +9,9 @@ import { DataTableRequestComponent } from '../data-table-request/data-table-requ
 })
 export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
   
-  errorAttributes: object;
-  requestAttributes: object;
+  searchInput: string;
+  errorAttributes: any;
+  requestAttributes: any;
   whichData: string;
 
   constructor(public cdr: ChangeDetectorRef) { }
@@ -21,9 +22,17 @@ export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
   
   // Set default attributes (data table POST request body)
   ngOnInit() {
-    const defaultAttributes = {
+    this.searchInput = null;
+    let defaultAttributes = {
       "count": false,
-      "view": "dashboard_index"
+      "view": "dashboard_index",
+      "search": {
+        "term": "default",
+        "attributes": [
+          "error_log_id",
+          "error"
+       ]
+      }
     };
     this.errorAttributes = defaultAttributes;
     this.requestAttributes = defaultAttributes;
@@ -44,6 +53,10 @@ export class TableContainerComponent implements OnInit, AfterViewInit, DoCheck {
     } else {
       this.requestTable.initFetch(this.requestAttributes);
     }
+  }
+
+  submitSearch() {
+    this.errorTable.search(this.searchInput);
   }
 
 
